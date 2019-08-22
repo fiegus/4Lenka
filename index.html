@@ -5,84 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Czytacz</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="script.js"></script>
 </head>
 
-<body id="body1" style="position: relative">
-    <canvas id="myCanvas" width="480" height="270"></canvas>
-    <form onsubmit="event.preventDefault();read()" style="padding: 50px;position: absolute;    top: 30%;    left: 30%;">
-        Co mam przeczytać?<br><br>
-        <input autofocus id="input1"><br><br>
-        <button type="submit">Czytaj!</button>
-        <button type="reset" onclick="stop()">x</button>
+<body>
+    <canvas id="myCanvas" width="200" height="250"></canvas>
+    <form onsubmit="event.preventDefault();read()">
+        <p>Co mam przeczytać?</p>
+        <input autofocus id="input1"><br>
+        <div style="margin-top:20px">
+            <button type="submit">Czytaj!</button>
+            <button type="reset" onclick="stop()">x</button>
+        </div>
     </form>
-    <script>
-        document.body.style.backgroundColor = getRandomColor()
-        var spk = window.speechSynthesis
-        var readingInterval
-
-        //canvas
-        var c = document.getElementById("myCanvas");
-        var ctx = c.getContext("2d");
-        // var image = new Image();
-        // image.src = "smiley.gif";
-        //ctx.drawImage(image, 10, 10);
-        ctx.beginPath();
-        ctx.arc(100, 75, 50, 0, 2 * Math.PI);
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.arc(80, 60, 10, 0, 2 * Math.PI);
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.arc(120, 60, 10, 0, 2 * Math.PI);
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.arc(100, 90, 20, 0, 1 * Math.PI);
-        ctx.stroke();
-
-
-        function read() {
-            var txt = document.getElementById('input1').value//.substring(0, 30);
-            var msg = new SpeechSynthesisUtterance(txt);
-
-            msg.addEventListener('start', function () {
-                console.log(txt);
-                document.getElementById('input1').disabled = true;
-                whenReading();
-            })
-
-            msg.addEventListener('end', function () {
-                document.getElementById('input1').disabled = false;
-                document.getElementById('input1').focus();
-                clearInterval(readingInterval);
-            })
-
-            spk.speak(msg);
-            setRandomColor();
-            
-        }
-        function stop() {
-            document.getElementById('input1').focus()
-            spk.cancel();
-        }
-        function getRandomColor() {
-            var letters = '0123456789ABCDEF';
-            var color = '#';
-            for (var i = 0; i < 6; i++) {
-                color += letters[Math.floor(Math.random() * 16)];
-            }
-            return color;
-        }
-
-        function setRandomColor(){
-            document.body.style.backgroundColor = getRandomColor();
-        }
-
-        function whenReading(){
-            readingInterval = setInterval(() => {
-                setRandomColor();
-            }, 200);
-        }
-    </script>
+    <img id="mouth" src="src/m0.png">
 </body>
 
 </html>
