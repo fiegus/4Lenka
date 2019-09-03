@@ -7,3 +7,12 @@ body{
 p,input,button{
     font-size: 30px;
 }
+
+.voices{
+    position: absolute;
+    right: 5px;
+    padding: 30px;
+    background: white;
+    border-radius: 20px;
+    top: 5px;
+}
