@@ -1,5 +1,5 @@
 var spk = window.speechSynthesis;
-var readingInterval, ctx, mouth, myVoices, input1, select1;
+var readingInterval, ctx, mouth, myVoices, input1, select1, slider;
 var initiated = false;
 
 
@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
   input1 = document.getElementById('input1');
   spk.onvoiceschanged = appendVoices;
   setEscButton();
+  setSliderEvent();
 
   //canvas
   var c = document.getElementById("myCanvas");
@@ -40,6 +41,7 @@ function read() {
   })
 
   msg.voice = myVoices[select1.value];
+  msg.rate = (slider.value / 10).toFixed(1)
   spk.speak(msg);
 }
 function stop() {
@@ -104,4 +106,13 @@ function appendVoices() {
     }
     initiated = true;
   }
+}
+
+function setSliderEvent() {
+  slider = document.getElementById("speedRatio");
+  var sliderOutput = document.getElementById("sliderOutput");
+  slider.oninput = function () {
+    sliderOutput.innerHTML = this.value;
+  }
+  sliderOutput.innerHTML = slider.value;
 }

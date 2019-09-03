@@ -4,15 +4,19 @@ body{
     text-align: center;
 }
 
-p,input,button{
+input,button{
     font-size: 30px;
+}
+p{
+    font-size: 20px;
 }
 
 .voices{
     position: absolute;
-    right: 5px;
-    padding: 30px;
-    background: white;
-    border-radius: 20px;
+    text-align: left;
     top: 5px;
+    right: 5px;
+    padding: 0 20px;
+    background: #ffffffed;
+    border-radius: 15px;
 }
