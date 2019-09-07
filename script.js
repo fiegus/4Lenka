@@ -105,6 +105,7 @@ function appendVoices() {
       select1.appendChild(opt);
     }
     initiated = true;
+    showSettings();
   }
 }
 
@@ -115,4 +116,8 @@ function setSliderEvent() {
     sliderOutput.innerHTML = this.value;
   }
   sliderOutput.innerHTML = slider.value;
+}
+
+function showSettings(){
+  document.getElementById("settings").style.display = "inherit";
 }

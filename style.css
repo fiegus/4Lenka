@@ -11,7 +11,7 @@ p{
     font-size: 20px;
 }
 
-.voices{
+.settings{
     position: absolute;
     text-align: left;
     top: 5px;
@@ -19,4 +19,8 @@ p{
     padding: 0 20px;
     background: #ffffffed;
     border-radius: 15px;
+}
+
+.cloak{
+    display: none;
 }
